@@ -1,12 +1,9 @@
-// Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
+
 function writePassword() {
-  // console.log("before generate password call")
   var password = generatePassword();
-  // var password = "Aly is awesome";***example
-  // console.log("after generate password call")
+  
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -15,20 +12,30 @@ function writePassword() {
 
 function generatePassword() {
   var passwordValue = "";
-  var amount = []
-  var Allnumbers = [0,1,2,3,4,5,6,7,8,9]
-  var littleLetters = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]
-  var bigLetters = [A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z]
-  // var moreCharacters = [!,",#,$,%,&,',(,),*,+,,,-,.,/,:,;,<,=,>,?,@,[,\,],^,_,`,{,|,},~,]
+  var amount = ['choice < 8 || choice > 128']
+  var Allnumbers = ['0','1','2','3','4','5','6','7','8','9']
+  var littleLetters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+  var bigLetters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+  var moreCharacters = ['!','"','#','$','%','&','(',')','*','+',',']
   var options = []
   
-  var amount = prompt("What length do you want your password to be?")
-  console.log(amount);
+  var howMany = prompt("What length do you want your password to be?")
+  console.log(howMany);
 
-  if (amount == "" ) {
+  if (howMany == "< 8 || > 128" ) {
     options.pushValues(amount)
   } 
+  else {
+    alert("Please pick a number between 8 and 128.")
+  }
 
+  var numbers = prompt("Do you want to include numebrs?")
+  console.log(numbers);
+
+  if (numbers == "yes" ) {
+    options.pushValues(Allnumbers)
+  } 
+  
   var lowercase = prompt("Do you want to include lowercase letters?")
   console.log(lowercase);
 
@@ -42,26 +49,20 @@ function generatePassword() {
   if (uppercase == "yes" ) {
     options.pushValues(bigLetters)
   } 
-  var numbers = prompt("Do you want to include numebrs?")
-  console.log(numbers);
+  var specialCharacters = prompt("Do you want to include special characters?")
+  console.log(specialCharacters);
 
-  if (numbers == "yes" ) {
-    options.pushValues(Allnumbers)
-  } 
-  var moreCharacters = prompt("Do you want to include special characters?")
-  console.log(special);
-
-  if (moreCharacters == "yes" ) {
+  if (specialCharacters == "yes" ) {
     options.pushValues(moreCharacters)
   } 
   
  for (var randomIndex = 0; randomIndex < options.length; randomIndex++) {
   var randomIndex = Math.random(options.length)
 
-   const randomIndex = options[randomIndex];
-   passwordValue = passwordValue + randomIndex;
+   const element = options[randomIndex];
+   passwordValue = passwordValue + element;
+  } 
    
- } 
  return passwordValue;
 }
 
@@ -83,4 +84,4 @@ generateBtn.addEventListener("click", writePassword);
 // abcdefghijklmnopqrstuvwxyz
 // ABCDEFGHIJKLMNOPQRSTUVWXYZ
 // 0123456789
-// !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~  **notice space is not being used**
+// '!','"','#','$','%','&',''','(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[','\',']','^','_','`','{','|','}','~'' **notice space is not being used**
