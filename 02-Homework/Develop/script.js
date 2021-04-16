@@ -12,48 +12,52 @@ function writePassword() {
 
 function generatePassword() {
   var passwordValue = "";
-  var amount = ['choice < 8 || choice > 128']
   var Allnumbers = ['0','1','2','3','4','5','6','7','8','9']
   var littleLetters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
   var bigLetters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
   var moreCharacters = ['!','"','#','$','%','&','(',')','*','+',',']
   var options = []
   
+  function choseHowMany() {
+    
+  }
   var howMany = prompt("What length do you want your password to be?")
   console.log(howMany);
 
-  if (howMany == "< 8 || > 128" ) {
-    options.pushValues(amount)
+
+  if (howMany >= 8 || howmany <= 128 ) {
+    options.push(amount)
   } 
+
   else {
     alert("Please pick a number between 8 and 128.")
   }
 
-  var numbers = prompt("Do you want to include numebrs?")
+  var numbers = prompt("Do you want to include numbers?")
   console.log(numbers);
 
   if (numbers == "yes" ) {
-    options.pushValues(Allnumbers)
+    options.push(Allnumbers)
   } 
   
   var lowercase = prompt("Do you want to include lowercase letters?")
   console.log(lowercase);
 
   if (lowercase == "yes" ) {
-    options.pushValues(littleLetters)
+    options.push(littleLetters)
   } 
 
   var uppercase = prompt("Do you want to include uppercase letters?")
   console.log(uppercase);
 
   if (uppercase == "yes" ) {
-    options.pushValues(bigLetters)
+    options.push(bigLetters)
   } 
   var specialCharacters = prompt("Do you want to include special characters?")
   console.log(specialCharacters);
 
   if (specialCharacters == "yes" ) {
-    options.pushValues(moreCharacters)
+    options.push(moreCharacters)
   } 
   
  for (var randomIndex = 0; randomIndex < options.length; randomIndex++) {
@@ -63,13 +67,14 @@ function generatePassword() {
    passwordValue = passwordValue + element;
   } 
    
- return passwordValue;
+   return passwordValue;
 }
 
+generatePassword();
+generateBtn.addEventListener("click", writePassword); // should this be ('click', generatePassword?)
+
+
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-
 // ask users parameter questions length
 // alow users to answer questions length
 // prompt for next question
