@@ -17,61 +17,66 @@ function generatePassword() {
   var bigLetters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
   var moreCharacters = ['!','"','#','$','%','&','(',')','*','+',',']
   var options = []
+  var howMany = 0
   
   function choseHowMany() {
+    howMany = prompt("What length do you want your password to be?")
+    console.log(howMany);
+  
+    if (howMany >= 8 || howMany <= 128 ) {
+      options.push(howMany).value
+    } 
+    else {
+      alert("Please pick a number between 8 and 128.")
+    }
+
+  }
+  choseHowMany();
+  
+  
     
-  }
-  var howMany = prompt("What length do you want your password to be?")
-  console.log(howMany);
-
-
-  if (howMany >= 8 || howmany <= 128 ) {
-    options.push(amount)
-  } 
-
-  else {
-    alert("Please pick a number between 8 and 128.")
-  }
 
   var numbers = prompt("Do you want to include numbers?")
   console.log(numbers);
 
   if (numbers == "yes" ) {
-    options.push(Allnumbers)
+    options.concat(Allnumbers)
   } 
   
   var lowercase = prompt("Do you want to include lowercase letters?")
   console.log(lowercase);
 
   if (lowercase == "yes" ) {
-    options.push(littleLetters)
+    options.concat(littleLetters)
   } 
 
   var uppercase = prompt("Do you want to include uppercase letters?")
   console.log(uppercase);
 
   if (uppercase == "yes" ) {
-    options.push(bigLetters)
+    options.concat(bigLetters)
   } 
   var specialCharacters = prompt("Do you want to include special characters?")
   console.log(specialCharacters);
 
   if (specialCharacters == "yes" ) {
-    options.push(moreCharacters)
+    options.concat(moreCharacters)
   } 
   
- for (var randomIndex = 0; randomIndex < options.length; randomIndex++) {
-  var randomIndex = Math.random(options.length)
+  console.log(options);
 
-   const element = options[randomIndex];
-   passwordValue = passwordValue + element;
+ for (var randomIndex = 0; randomIndex < howMany; randomIndex++) {
+  var randomIndex = Math.floor(Math.random()*options.length)
+
+  passwordValue = passwordValue + options[randomIndex];
+
   } 
    
    return passwordValue;
 }
 
-generatePassword();
-generateBtn.addEventListener("click", writePassword); // should this be ('click', generatePassword?)
+
+generateBtn.addEventListener("click", writePassword);
 
 
 // Add event listener to generate button
