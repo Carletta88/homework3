@@ -33,35 +33,33 @@ function generatePassword() {
   
   choseHowMany();
    
-
-  var numbers = prompt("Do you want to include numbers?")
+  var numbers = confirm("Do you want to include numbers?")
   console.log(numbers);
 
   if (numbers) {
     options = options.concat(Allnumbers);
   } 
   
-  var lowercase = prompt("Do you want to include lowercase letters?")
+  var lowercase = confirm("Do you want to include lowercase letters?")
   console.log(lowercase);
 
-  if (lowercase == "yes" ) {
+  if (lowercase) {
     options = options.concat(littleLetters);
   } 
 
-  var uppercase = prompt("Do you want to include uppercase letters?")
+  var uppercase = confirm("Do you want to include uppercase letters?")
   console.log(uppercase);
 
-  if (uppercase == "yes" ) {
+  if (uppercase) {
     options = options.concat(bigLetters);
   } 
-  var specialCharacters = prompt("Do you want to include special characters?")
+  var specialCharacters = confirm("Do you want to include special characters?")
   console.log(specialCharacters);
 
-  if (specialCharacters == "yes" ) {
+  if (specialCharacters) {
     options = options.concat(moreCharacters);
   } 
-  console.log(options);
-  console.log(howMany);
+  
   
   for (var randomIndex = 0; randomIndex < howMany; randomIndex++) {
     passwordValue = passwordValue + options[Math.floor(Math.random() * options.length)];
@@ -71,11 +69,4 @@ function generatePassword() {
 };
    
 generateBtn.addEventListener("click", writePassword);
-
-
-
-  
-  
-
-
-
+      
